@@ -1,13 +1,118 @@
 .header {
-  padding: 28px 0;
-
-  background-color: $color-neon-blue;
-
+  width: 100%;
+  min-height: 80px;
+  padding: 20px 0;
+  background-color: $color-default-white;
+  position: fixed;
+  z-index: 10;
+  box-shadow: 0px 4px 15px rgba($color-default-black, 0.1);
+  @include vp-1023 {
+    min-height: 70px;
+    padding: 15px 0;
+  }
   .container {
     display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    @include vp-1023 {
+      justify-content: space-between;
+    }
   }
 
   &__logo {
+    flex-shrink: 0;
     color: $color-default-white;
+    @include vp-1023 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+    }
+  }
+  &__links {
+    flex-basis: 167px;
+    margin-left: 9px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include vp-1023 {
+      flex: auto;
+      margin: 0;
+      justify-content: flex-start;
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: -10px;
+    @include hover-focus {
+      outline: none;
+      .header__link-icon {
+        &--vk {
+          stroke: $color-dodger-blue;
+        }
+      }
+    }
+    &--call {
+      font-size: 14px;
+      line-height: 20px;
+      @include vp-1023 {
+        margin-right: 40px;
+        font-weight: 500;
+        font-size: 23px;
+        line-height: 24px;
+      }
+      @include vp-374 {
+        margin-right: auto;
+      }
+      &::after {
+        bottom: 10px;
+      }
+    }
+    &--cart {
+      height: 36px;
+      position: relative;
+      transition: transform $trans-default;
+      transform: scale(1);
+      @include hover-focus {
+        transform: scale(1.2);
+      }
+      .cart-counter {
+        width: 14px;
+        height: 14px;
+        top: 0;
+        right: 0;
+        position: absolute;
+        font-weight: 700;
+        font-size: 8px;
+        line-height: 15px;
+        color: $color-blackcurrant;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        padding: 5px;
+        border: 1px solid $color-default-black;
+      }
+    }
+    &--vk {
+      @include vp-1023 {
+        svg {
+          width: 34px;
+          height: 20px;
+        }
+      }
+    }
+    &-icon {
+      pointer-events: none;
+      transition: color $trans-default, stroke $trans-default;
+      &--vk {
+        stroke: #1a171b;
+      }
+    }
   }
 }

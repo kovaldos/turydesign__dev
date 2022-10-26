@@ -4,6 +4,7 @@
 // Default
 
 $color-default-black:               #000000;
+$color-blackcurrant:                #1a171b;
 $color-default-white:               #ffffff;
 $color-transparent:                 rgba(255, 255, 255, 0);
 
@@ -11,6 +12,7 @@ $color-transparent:                 rgba(255, 255, 255, 0);
 // для нейминга цветов используем https://www.htmlcsscolor.com/hex/334482
 
 $color-neon-blue:                   #2c39f2;
+$color-dodger-blue:                 #2787f5;
 $color-torch-red:                   #ff1553;
 
 // Gradient
@@ -27,6 +29,7 @@ $fz-default:                        16px;
 // https://www.artlebedev.ru/kovodstvo/sections/159/#13
 $ff-rouble:                         "Rouble", "Arial", sans-serif;
 
+$ff-primary:                    "Montserrat", sans-serif;
 $ff-placeholder:                    "Placeholder", "Arial", sans-serif;
 
 // Animation
