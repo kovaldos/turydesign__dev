@@ -2,6 +2,8 @@ import {iosVhFix} from './utils/ios-vh-fix';
 import {initModals} from './modules/modals/init-modals';
 import {initCustomSelect} from './modules/form/init-custom-select';
 import {initFormValidate} from './modules/form/init-form-validate';
+import {initBurgerMenu} from './modules/init-burger-menu';
+import {initSubmenu} from './modules/init-submenu';
 
 // ---------------------------------
 
@@ -11,6 +13,8 @@ window.addEventListener('DOMContentLoaded', () => {
   // ---------------------------------
 
   iosVhFix();
+  initBurgerMenu();
+  initSubmenu();
 
   // Modules
   // ---------------------------------

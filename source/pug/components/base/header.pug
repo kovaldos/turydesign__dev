@@ -1,36 +1,104 @@
 mixin header(headerMods, currentUrl)
   -
-    const headerLinks = [
-      {
-        href: "index.html",
-        text: "Главная"
+    const data = {
+      headerLinks: [
+        {
+          href: "catalog-sections.html",
+          text: "Каталог"
+        },
+        {
+          href: "about-product.html",
+          text: "О продуктах"
+        },
+        {
+          href: "about-us.html",
+          text: "О нас"
+        },
+        {
+          href: "shipping-and-payment.html",
+          text: "Доставка и оплата"
+        },
+        {
+          href: "become-partner.html",
+          text: "Стать партнером"
+        },
+        {
+          href: "contacts.html",
+          text: "Контакты"
+        },
+      ],
+      submenu: [
+        {
+          href: "catalog-paints.html",
+          text: "Краски",
+        },
+        {
+          href: "catalog-lacquer.html",
+          text: "Лаки",
+        },
+        {
+          href: "catalog-prime.html",
+          text: "Грунты",
+        },
+        {
+          href: "catalog-accessories.html",
+          text: "Аксессуары",
+        },
+      ],
+      callLink: {
+        href: "tel:+78126034500",
+        text: "+7 (812) 603 45 00",
       },
-      {
-        href: "#",
-        text: "Страница 2"
-      },
-      {
-        href: "#",
-        text: "Страница 3"
-      },
-    ]
+      cartLink: {
+        href: "cart.html",
+        text: "",
+      }
+    }
 
   header.header(class=headerMods)
     .container
+      button.btn.btn--reset.main-nav__toggle(type="button" aria-label="Переключатель отображения меню" aria-pressed="false" data-burger-btn)
+        svg(width='50' height='40' viewBox='0 0 100 100')
+          path.line.line1(d='M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058')
+          path.line.line2(d='M 20,50 H 80')
+          path.line.line3(d='M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942')
       if(currentUrl === "index.html")
-        //- lighthouse снимает 10 баллов SEO за <a> без href
-        span.header__logo Логотип
+        span.header__logo
+          +picture("content", "logo", "png", 35, 40, "Логотип turydesign")
       else
-        a.header__logo(href="index.html", aria-label="Переход на главную") Логотип
-      nav.main-nav
-        button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
-          +icon("icon-burger", 20, 20)
+        a.header__logo(href="index.html" aria-label="Переход на главную")
+          +picture("content", "logo", "png", 35, 40, "Логотип turydesign")
+      nav.main-nav(data-burger-body)
         .main-nav__wrapper
           ul.main-nav__list
-            each link in headerLinks
+            each link, index in data.headerLinks
               - const activeState = currentUrl === link.href
               li.main-nav__item
                 if(activeState)
                   span.main-nav__link.is-active=link.text
                 else
-                  a.main-nav__link(href=link.href)=link.text
+                  if index === 0
+                    a.link.main-nav__link(href=link.href)=link.text
+                    button.btn.btn--reset.main-nav__submenu-toggle(type="button" data-submenu-toggle)
+                      +icon("icon-chevron-left", 10, 18)
+                    .main-nav__submenu(data-submenu-body)
+                      button.btn.btn--reset.main-nav__submenu-back(type="button")
+                        +icon("icon-chevron-left", 10, 18)
+                        span=data.headerLinks[0].text
+                      ul.main-nav__submenu-list
+                        each item in data.submenu 
+                          li.main-nav__submenu-item 
+                            a.link.main-nav__sublink(href=item.href)=item.text
+                  else 
+                    a.link.main-nav__link(href=link.href)=link.text
+
+
+          .header__links 
+            a.link.header__link.header__link--call(href=data.callLink.href)=data.callLink.text
+            a.header__link.header__link--vk(href="http://vk.com" target="_blank" rel="noopener noreferrer nofollow")
+              //- +icon("icon-vk", 18, 16)
+              svg.header__link-icon.header__link-icon--vk( width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg")
+                path(fill-rule="evenodd" clip-rule="evenodd" d="M0.988281 3.43945C1.11842 9.43588 4.24178 13.0395 9.71772 13.0395H10.0281V9.60881C12.0403 9.801 13.5618 11.2136 14.1725 13.0395H17.0157C16.2348 10.3103 14.1825 8.80159 12.9011 8.22502C14.1825 7.5139 15.9845 5.78421 16.4149 3.43945H13.832C13.2714 5.34217 11.6098 7.07186 10.0281 7.23522V3.43945H7.4452V10.0893C5.84347 9.7049 3.82133 7.84068 3.73123 3.43945H0.988281Z" stroke-width="0.8" stroke-linejoin="round")
+      a.header__link.header__link--cart(href=data.cartLink.href)=data.cartLink.text
+        +icon("icon-shopping-bag", 16,16).header__link-icon.header__link-icon--bag
+        span.cart-counter 5
