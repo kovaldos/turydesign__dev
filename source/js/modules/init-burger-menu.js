@@ -9,9 +9,12 @@ const initBurgerMenu = () => {
         document.body.classList.toggle('scroll-lock');
         burgerBtn.classList.toggle('is-active');
         menuBody.classList.toggle('is-active');
+        if (menuBody.querySelector('.main-nav__submenu').classList.contains('is-active')) {
+          menuBody.querySelector('.main-nav__submenu').classList.remove('is-active');
+        }
       });
       menuBody.addEventListener('click', (e) => {
-        const burgerLinks = menuBody.querySelectorAll('.burger__link');
+        const burgerLinks = menuBody.querySelectorAll('.main-nav__link');
         burgerLinks.forEach((burgerLink) => {
           if (e.target === burgerLink && menuBody.classList.contains('is-active')) {
             document.body.classList.remove('scroll-lock');

@@ -27,6 +27,24 @@ mixin header(headerMods, currentUrl)
           text: "Контакты"
         },
       ],
+      submenu: [
+        {
+          href: "catalog-paints.html",
+          text: "Краски",
+        },
+        {
+          href: "catalog-lacquer.html",
+          text: "Лаки",
+        },
+        {
+          href: "catalog-prime.html",
+          text: "Грунты",
+        },
+        {
+          href: "catalog-accessories.html",
+          text: "Аксессуары",
+        },
+      ],
       callLink: {
         href: "tel:+78126034500",
         text: "+7 (812) 603 45 00",
@@ -53,13 +71,28 @@ mixin header(headerMods, currentUrl)
       nav.main-nav(data-burger-body)
         .main-nav__wrapper
           ul.main-nav__list
-            each link in data.headerLinks
+            each link, index in data.headerLinks
               - const activeState = currentUrl === link.href
               li.main-nav__item
                 if(activeState)
                   span.main-nav__link.is-active=link.text
                 else
-                  a.link.main-nav__link(href=link.href)=link.text
+                  if index === 0
+                    a.link.main-nav__link(href=link.href)=link.text
+                    button.btn.btn--reset.main-nav__submenu-toggle(type="button" data-submenu-toggle)
+                      +icon("icon-chevron-left", 10, 18)
+                    .main-nav__submenu(data-submenu-body)
+                      button.btn.btn--reset.main-nav__submenu-back(type="button")
+                        +icon("icon-chevron-left", 10, 18)
+                        span=data.headerLinks[0].text
+                      ul.main-nav__submenu-list
+                        each item in data.submenu 
+                          li.main-nav__submenu-item 
+                            a.link.main-nav__sublink(href=item.href)=item.text
+                  else 
+                    a.link.main-nav__link(href=link.href)=link.text
+
+
           .header__links 
             a.link.header__link.header__link--call(href=data.callLink.href)=data.callLink.text
             a.header__link.header__link--vk(href="http://vk.com" target="_blank" rel="noopener noreferrer nofollow")
