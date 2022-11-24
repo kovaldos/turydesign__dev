@@ -4,6 +4,7 @@ import {initCustomSelect} from './modules/form/init-custom-select';
 import {initFormValidate} from './modules/form/init-form-validate';
 import {initBurgerMenu} from './modules/init-burger-menu';
 import {initSubmenu} from './modules/init-submenu';
+import {initBtnToTop} from './modules/init-btn-to-top';
 
 // ---------------------------------
 
@@ -25,6 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
     initModals();
     initCustomSelect();
     initFormValidate();
+    initBtnToTop();
   });
 });
 

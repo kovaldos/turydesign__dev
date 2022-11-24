@@ -1,3 +1,91 @@
 mixin footer(footerMods)
+  -
+    const data = {
+      menu: [
+        {
+          href: "catalog-sections.html",
+          text: "Каталог"
+        },
+        {
+          href: "about-product.html",
+          text: "О продуктах"
+        },
+        {
+          href: "about-us.html",
+          text: "О нас"
+        },
+        {
+          href: "shipping-and-payment.html",
+          text: "Доставка и оплата"
+        },
+        {
+          href: "become-partner.html",
+          text: "Стать партнером"
+        },
+        {
+          href: "contacts.html",
+          text: "Контакты"
+        },
+      ],
+      name: "НПК «Палитра»",
+      address: "Россия, Санкт-Петербург, Ириновский проспект, дом 2 ",
+      tel: {
+        href: "tel:+78126034500",
+        text: "+7 (812) 6034500 ",
+      },
+      email: {
+        href: "mailto:zakaz@palitra-npk.ru",
+        text: "zakaz@palitra-npk.ru",
+      },
+      items: [
+        {
+          href: "https://vk.com/turydesign",
+          icon: "icon-vk",
+          text: "вступить в группу ВКонтакте",
+        },
+        {
+          dataAttr: "subscribe",
+          icon: "icon-email",
+          text: "Подписаться на рассылку",
+        }
+      ],
+      copy: "www.turydesign.ru"
+    }
   footer.footer(class=footerMods)
     .container
+      .footer__cols
+        nav.footer__nav.footer__col.footer__col--01
+          ul.footer__list.footer__list--nav
+            each item in data.menu 
+              li.footer__list-item 
+                a.link.footer__list-link(href=item.href)=item.text
+        .footer__col.footer__col--02
+          if(currentUrl === "index.html")
+            span.footer__logo
+              +picture("content", "logo-footer", "png", 85, 96, "Логотип turydesign")
+          else
+            a.footer__logo(href="index.html" aria-label="Переход на главную")
+              +picture("content", "logo-footer", "png", 85, 96, "Логотип turydesign")
+          h2.title.footer__title=data.name
+          .footer__contacts 
+            span.footer__address=data.address
+            a.link.footer__tel(href=data.tel.href)=data.tel.text
+            a.link.footer__email(href=data.email.href)=data.email.text
+        .footer__col.footer__col--03
+          button.btn.btn--reset.btn-to-top 
+            +icon("icon-chevron-left", 13, 7)
+          ul.footer__list.footer__list--subs
+            each item in data.items 
+              li.footer__list-item
+                if item.href
+                  a.btn.footer__btn.footer__link-vk(href=item.href, target="_blank", rel="noopener noreferrer")
+                    +icon(item.icon, 24, 24)
+                    span=item.text
+                else
+                  button.btn.footer__btn.footer__btn-subs(data-modal-open=item.dataAttr)
+                    +icon(item.icon, 24, 24)
+                    span=item.text
+          .footer__copy
+            span=data.copy
+
+
