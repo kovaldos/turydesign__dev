@@ -1,0 +1,29 @@
+mixin hero()
+  -
+    const data = {
+      brand: "Turydesign",
+      title: "Все дело",
+      title2: "в цвете",
+      subtitle: "Яркие краски как сама жизнь",
+      link: {
+        href: "catalog-section.html",
+        text: "перейти в каталог",
+      }
+    }
+  section.section.hero
+    .hero__wrapper
+      .container
+        .hero__cols
+          .hero__col.hero__col--01
+            span.hero__brand=data.brand 
+            +picture("content", "hero-img", "jpg", 469, 469, "Разноцветные облака").hero__picture
+          .hero__col.hero__col--02
+            h1.title.title--h1.hero__heading
+              span.hero__title=data.title
+              span.hero__title=data.title2
+              span.hero__subtitle=data.subtitle
+            a.link.hero__link(href=data.link.href)
+              +icon("icon-arrow-left", 16, 14).hero__link-icon.hero__link-icon--left
+              span=data.link.text
+              +icon("icon-arrow-left", 16, 14).hero__link-icon.hero__link-icon--right
+
