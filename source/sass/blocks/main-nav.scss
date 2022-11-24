@@ -131,6 +131,7 @@
       }
       svg {
         transform: rotate(180deg);
+        color: $color-default-black;
       }
     }
     &-back {
@@ -148,6 +149,7 @@
         left: 0;
         top: 50%;
         transform: translateY(-50%);
+        color: $color-default-black;
       }
       span {
         pointer-events: none;
@@ -182,6 +184,7 @@
     }
     svg {
       pointer-events: none;
+      transition: color $trans-default;
     }
   }
 }
@@ -207,14 +210,17 @@
   stroke-dasharray: 90 207;
   stroke-dashoffset: -135;
   stroke-width: 6;
+  stroke: $color-grey;
 }
 .is-active .line2 {
   stroke-dasharray: 1 60;
   stroke-dashoffset: -30;
   stroke-width: 6;
+  stroke: $color-grey;
 }
 .is-active .line3 {
   stroke-dasharray: 90 207;
   stroke-dashoffset: -135;
   stroke-width: 6;
+  stroke: $color-grey;
 }
