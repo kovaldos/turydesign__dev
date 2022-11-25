@@ -1,7 +1,9 @@
 .hero {
 	padding: 0;
+	margin: 0 0 120px;
 	@include vp-1023 {
 		padding: 0 0 65px;
+		margin: 0 0 40px;
 	}
 	@include vp-767 {
 		min-height: 310px;

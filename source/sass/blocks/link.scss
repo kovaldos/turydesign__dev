@@ -6,7 +6,7 @@
   font-size: 1rem;
   line-height: 1.5;
   color: $color-blackcurrant;
-  transition: color $trans-default;
+  transition: color $trans-default, background-color $trans-default;
   outline: none;
   position: relative;
   padding: 5px;

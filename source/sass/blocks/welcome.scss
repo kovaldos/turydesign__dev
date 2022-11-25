@@ -1,0 +1,31 @@
+.welcome {
+	&__heading {
+		text-align: center;
+		font-weight: 600;
+		line-height: 130px;
+		text-transform: uppercase;
+		color: $color-default-white;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		@include vp-1023 {
+			font-size: 20px;
+			line-height: 35px;
+		}
+	}
+	&__title {
+		padding: 0 30px;
+		background-color: $color-default-black;
+		display: block;
+		width: fit-content;
+		@include vp-1023 {
+			padding: 0 5px;
+		}
+		&:not(:last-of-type) {
+			margin: 0 0 20px;
+			@include vp-1023 {
+				margin: 0 0 5px;
+			}
+		}
+	}
+}

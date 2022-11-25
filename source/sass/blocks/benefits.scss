@@ -1,0 +1,159 @@
+.benefits {
+	height: 100%;
+	&__wrapper {
+		position: relative;
+		height: 733px;
+		margin: 0 0 157px;
+		@include vp-1023 {
+			margin: 0 0 5px;
+		}
+		@include vp-767 {
+			height: 315px;
+		}
+	}
+	.container {
+		height: 100%;
+	}
+	&__picture-paints {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 0;
+		@include vp-1023 {
+			display: none;
+		}
+	}
+	&__content {
+		position: relative;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	&__picture-bg {
+		position: absolute;
+		left: -225px;
+		bottom: 0;
+		z-index: 0;
+		@include vp-1023 {
+			height: 100%;
+		}
+		@include vp-767 {
+			max-width: 325px;
+			left: -20px;
+		}
+		@include vp-424 {
+			max-width: 235px;
+		}
+	}
+	&__picture {
+		position: absolute;
+		left: calc(50% - 85px);
+		bottom: -157px;
+		z-index: 0;
+		@include adaptiveDesktopToMobile(width, 470, 140);
+		@include vp-1023 {
+			right: -40px;
+			left: auto;
+			bottom: -20px;
+		}
+		@include vp-767 {
+			right: -20px;
+		}
+		@include vp-424 {
+			bottom: 60px;
+		}
+	}
+	&__title {
+		position: relative;
+		color: $color-default-white;
+		margin: 0 0 45px;
+		@include vp-767 {
+			margin: 0 0 10px;
+			letter-spacing: normal;
+		}
+		&--colored {
+			color: $color-blackcurrant;
+			position: relative;
+			&::before {
+				content: "";
+				position: absolute;
+				width: 9px;
+				height: 12px;
+				background-color: $color-default-white;
+				top: 24px;
+				left: 1px;
+			}
+			@include vp-1023 {
+				color: $color-default-white;
+				display: inline-block;
+				margin: 0 0 0 2px;
+				&::before {
+					display: none;
+				}
+			}
+			@include vp-424 {
+				color: $color-blackcurrant;
+				margin: 0;
+			}
+		}
+	}
+	&__list {
+		position: relative;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		flex: auto;
+		&-item {
+			&:not(:last-of-type) {
+				margin: 0 0 25px;
+				@include vp-767 {
+					height: 12px;
+					margin: 0 0 10px;
+				}
+			}
+		}
+	}
+	&__item {
+		font-weight: 700;
+		font-size: 20px;
+		line-height: 20px;
+		text-transform: uppercase;
+		color: $color-default-white;
+		@include vp-767 {
+			font-size: 10px;
+			line-height: 10px;
+		}
+	}
+	&__link {
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 20px;
+		text-transform: uppercase;
+		color: $color-blackcurrant;
+		margin: 0 0 100px;
+		padding: 10px 20px;
+		width: fit-content;
+		background-color: $color-default-white;
+		@include vp-767 {
+			color: $color-default-white;
+			background-color: $color-blackcurrant;
+			margin: 0;
+		}
+		@include hover-focus {
+			background-color: $color-blackcurrant;
+			svg {
+				stroke: $color-default-white;
+			}
+		}
+		svg {
+			flex-shrink: 0;
+			margin: 0 0 0 6px;
+			stroke: $color-blackcurrant;
+			transition: stroke $trans-default;
+			@include vp-767 {
+				stroke: $color-default-white;
+			}
+		}
+	}
+}
