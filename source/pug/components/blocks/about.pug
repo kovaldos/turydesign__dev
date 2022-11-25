@@ -1,0 +1,22 @@
+mixin about()
+  -
+    const data = {
+      title: "О нас",
+      text: "Краски <span class='about__text--caps'>TURYDESIGN</span> — это высококачественные краски для декорирования интерьера и его элементов. Эта краска может использоваться практически на любой поверхности! <span class='about__text--bold'>Все, что вам захочется, вы можете покрасить </><span class='about__text--caps'>TURYDESIGN!</span>",
+      link: {
+        href: "about-us.html",
+        text: "Узнать больше",
+      }
+    }
+  section.section.about
+    .about__wrapper
+      .container
+        .about__cols
+          .about__col.about__col--01
+            h2.title.title--h2.about__title=data.title
+            +picture("content", "about-img", "jpg", 685, 570, "Дизайнерский стул").about__picture
+          .about__col.about__col--02
+            p.about__text!=data.text
+            a.link.about__link(href=data.link.href)=data.link.text
+              +icon("icon-arrow-left", 16, 16)
+

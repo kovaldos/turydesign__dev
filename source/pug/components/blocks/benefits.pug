@@ -1,0 +1,29 @@
+mixin benefits()
+  -
+    const data = {
+      title: "Преимущес<span class='benefits__title--colored'>тва</span>",
+      list: [
+        "Долговечность",
+        "Экологичность",
+        "Стойкость",
+      ],
+      link: {
+        href: "catalog-section.html",
+        text: "Узнать больше",
+      }
+    }
+  section.section.benefits
+    .benefits__wrapper
+      +picture("content", "benefits-paints-img", "ppg", 315, 478, "Разноцветное пятно краски").benefits__picture-paints
+      .container
+        .benefits__content
+          +picture("content", "benefits-girls-img", "jpg", 895, 733, "Девушки красятся краской").benefits__picture-bg
+          +picture("content", "benefits-img", "jpg", 470, 588, "Картина маслом").benefits__picture
+          h2.title.title--h2.benefits__title!=data.title
+          ul.benefits__list 
+            each item in data.list 
+              li.benefits__list-item 
+                span.benefits__item=item
+          a.link.benefits__link(href=data.link.href)=data.link.text
+            +icon("icon-arrow-right-long", 37, 16)
+

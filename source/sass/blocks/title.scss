@@ -15,4 +15,16 @@
 			letter-spacing: 0.41px;
 		}
 	}
+	&--h2 {
+		font-weight: 700;
+		font-size: 90px;
+		line-height: 95px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		color: $color-blackcurrant;
+		@include vp-1023 {
+			font-size: 30px;
+			line-height: 30px;
+		}
+	}
 }
